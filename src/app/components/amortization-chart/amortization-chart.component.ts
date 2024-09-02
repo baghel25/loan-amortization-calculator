@@ -1,10 +1,15 @@
+// amortization-chart.component.ts
 import { Component, OnChanges, Input } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
 @Component({
   selector: 'app-amortization-chart',
   templateUrl: './amortization-chart.component.html',
-  styleUrls: ['./amortization-chart.component.scss']
+  styleUrls: ['./amortization-chart.component.scss'],
+  standalone: true,
+  imports: [
+    // Ensure to include necessary imports if required for standalone
+  ]
 })
 export class AmortizationChartComponent implements OnChanges {
   @Input() schedule: any[] = [];
@@ -23,19 +28,22 @@ export class AmortizationChartComponent implements OnChanges {
         type: 'line',
         data: {
           labels: this.schedule.map(item => `Month ${item.month}`),
-          datasets: [{
-            label: 'Remaining Balance',
-            data: this.schedule.map(item => item.balance),
-            borderColor: 'blue',
-            borderWidth: 1,
-            fill: false
-          }, {
-            label: 'Interest Paid',
-            data: this.schedule.map(item => item.interest),
-            borderColor: 'red',
-            borderWidth: 1,
-            fill: false
-          }]
+          datasets: [
+            {
+              label: 'Remaining Balance',
+              data: this.schedule.map(item => item.balance),
+              borderColor: 'blue',
+              borderWidth: 1,
+              fill: false
+            },
+            {
+              label: 'Interest Paid',
+              data: this.schedule.map(item => item.interest),
+              borderColor: 'red',
+              borderWidth: 1,
+              fill: false
+            }
+          ]
         },
         options: {
           responsive: true,

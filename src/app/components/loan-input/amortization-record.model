@@ -1,0 +1,7 @@
+export interface AmortizationRecord {
+  month: number;
+  payment: number;
+  interest: number;
+  principalPayment: number;
+  balance: number;
+}

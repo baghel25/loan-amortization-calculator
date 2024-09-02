@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { LoanService } from '../../services/loan.service';
 import { Router } from '@angular/router';
+import { LoanService } from '../../services/loan.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-// import { MatDatepickerToggleModule } from '@angular/material/datepicker';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-loan-input',
@@ -18,8 +17,7 @@ import { CommonModule } from '@angular/common';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDatepickerModule,
-    // MatDatepickerToggleModule
+    MatDatepickerModule
   ]
 })
 export class LoanInputComponent {
@@ -36,7 +34,7 @@ export class LoanInputComponent {
       this.annualInterestRate,
       this.loanTerm
     );
-    // Pass the schedule to another component via a service or route parameters
-    this.router.navigate(['/schedule'], { state: { schedule } });
+    // Navigate to the amortization table route with the schedule data
+    this.router.navigate(['/amortization-table'], { state: { schedule } });
   }
 }

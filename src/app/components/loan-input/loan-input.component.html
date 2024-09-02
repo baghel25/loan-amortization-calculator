@@ -1,25 +1,27 @@
-<form (ngSubmit)="calculateAmortization()" #loanForm="ngForm">
-  <mat-form-field>
-    <mat-label>Loan Amount</mat-label>
-    <input matInput [(ngModel)]="loanAmount" name="loanAmount" required />
-  </mat-form-field>
+<div class="loan-input-container">
+  <form (ngSubmit)="calculateAmortization()" #loanForm="ngForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Loan Amount</mat-label>
+      <input matInput type="number" [(ngModel)]="loanAmount" name="loanAmount" required />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Annual Interest Rate (%)</mat-label>
-    <input matInput [(ngModel)]="annualInterestRate" name="annualInterestRate" required />
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Annual Interest Rate (%)</mat-label>
+      <input matInput type="number" [(ngModel)]="annualInterestRate" name="annualInterestRate" step="0.01" required />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Loan Term (Years)</mat-label>
-    <input matInput [(ngModel)]="loanTerm" name="loanTerm" required />
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Loan Term (years)</mat-label>
+      <input matInput type="number" [(ngModel)]="loanTerm" name="loanTerm" required />
+    </mat-form-field>
 
-  <mat-form-field>
-    <mat-label>Start Date</mat-label>
-    <input matInput [(ngModel)]="startDate" name="startDate" [matDatepicker]="picker" />
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Start Date</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="startDate" name="startDate" />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
 
-  <button mat-raised-button color="primary" type="submit">Calculate</button>
-</form>
+    <button mat-raised-button color="primary" type="submit">Calculate</button>
+  </form>
+</div>

@@ -1,3 +1,4 @@
+// loan.service.ts
 import { Injectable } from '@angular/core';
 
 @Injectable({

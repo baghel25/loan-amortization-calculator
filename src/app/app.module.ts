@@ -1,28 +1,28 @@
+// app.module.ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router'; // Import RouterModule
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoanInputComponent } from './components/loan-input/loan-input.component';
 import { AmortizationTableComponent } from './components/amortization-table/amortization-table.component';
-import { AmortizationChartComponent } from './components/amortization-chart/amortization-chart.component';
-import { LoanService } from './services/loan.service';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoanInputComponent,
-    AmortizationTableComponent,
-    AmortizationChartComponent
+    AmortizationTableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule, // Import RouterModule here
-    FormsModule
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule
   ],
-  providers: [LoanService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

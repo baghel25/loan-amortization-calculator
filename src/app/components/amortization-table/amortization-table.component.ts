@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common'; // Import CommonModule for pipes like currency
-import { MatTableModule } from '@angular/material/table'; // Import Angular Material Table module
-import { MatSortModule } from '@angular/material/sort'; // Import Angular Material Sort module
-import { MatPaginatorModule } from '@angular/material/paginator'; // Import Angular Material Paginator module
+import { ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
+import { MatTableModule } from '@angular/material/table'; // Import MatTableModule
 
 @Component({
   selector: 'app-amortization-table',
@@ -11,24 +10,21 @@ import { MatPaginatorModule } from '@angular/material/paginator'; // Import Angu
   styleUrls: ['./amortization-table.component.scss'],
   standalone: true,
   imports: [
-    CommonModule, // Add CommonModule for built-in Angular pipes
-    MatTableModule, // Add Angular Material Table module
-    MatSortModule, // Add Angular Material Sort module if needed
-    MatPaginatorModule // Add Angular Material Paginator module if needed
+    CommonModule,
+    MatTableModule // Include MatTableModule here
   ]
 })
 export class AmortizationTableComponent implements OnInit {
-  schedule: any[] = [];
+  displayedColumns: string[] = ['month', 'payment', 'interest', 'principalPayment', 'balance'];
+  dataSource = new MatTableDataSource<any>();
 
-  constructor(private router: Router) {}
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    const navigation = this.router.getCurrentNavigation();
-    if (navigation?.extras?.state) {
-      const state = navigation.extras.state as any;
-      if (state.schedule) {
-        this.schedule = state.schedule;
-      }
+    // Access the state passed from the previous component
+    const schedule = history.state.schedule;
+    if (schedule) {
+      this.dataSource.data = schedule;
     }
   }
 }
