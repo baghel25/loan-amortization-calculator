@@ -1,0 +1,25 @@
+<form (ngSubmit)="calculateAmortization()" #loanForm="ngForm">
+  <mat-form-field>
+    <mat-label>Loan Amount</mat-label>
+    <input matInput [(ngModel)]="loanAmount" name="loanAmount" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Annual Interest Rate (%)</mat-label>
+    <input matInput [(ngModel)]="annualInterestRate" name="annualInterestRate" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Loan Term (Years)</mat-label>
+    <input matInput [(ngModel)]="loanTerm" name="loanTerm" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Start Date</mat-label>
+    <input matInput [(ngModel)]="startDate" name="startDate" [matDatepicker]="picker" />
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" type="submit">Calculate</button>
+</form>
